@@ -9,13 +9,17 @@ namespace CarSpecPaster
         public void Work(string originFilePath, string resultFilePath, 
             Dictionary<string, string> substitutions)
         {
+            Console.WriteLine("Loading template..." );
             Document doc = new Document();
             doc.LoadFromFileInReadMode(originFilePath, FileFormat.Auto);
             //doc.LoadFromFile(originFilePath);
+            Console.WriteLine("Modifying template...");
             Replace(doc, substitutions);
             try
             {
+                Console.WriteLine("Saving result...");
                 doc.SaveToFile(resultFilePath, FileFormat.Doc);
+                Console.WriteLine("Done.");
             }
             catch(System.IO.IOException e)
             {
