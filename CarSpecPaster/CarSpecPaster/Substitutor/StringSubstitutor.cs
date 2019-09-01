@@ -13,7 +13,15 @@ namespace CarSpecPaster
             doc.LoadFromFileInReadMode(originFilePath, FileFormat.Auto);
             //doc.LoadFromFile(originFilePath);
             Replace(doc, substitutions);
-            doc.SaveToFile(resultFilePath, FileFormat.Doc);
+            try
+            {
+                doc.SaveToFile(resultFilePath, FileFormat.Doc);
+            }
+            catch(System.IO.IOException e)
+            {
+                Console.WriteLine("Error writing to file. Have you closed it?");
+                Console.WriteLine(e.Message);
+            }
         }
 
         public Dictionary<string, string> ComposeSubstitutionPairs(ReadRules rules, Dictionary<string, string> excelData)

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -9,6 +9,17 @@
     <PackageReference Include="ExcelDataReader" Version="3.6.0" />
     <PackageReference Include="Spire.Doc" Version="7.8.12" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TextFiles\" />
+  </ItemGroup>
+  
+    
+  <ItemGroup>
+    <Content Include="TextFiles\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>  
   </ItemGroup>
 
 </Project>
