@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSpecPaster", "CarSpecPaster\CarSpecPaster.csproj", "{7AF6B24B-8092-4518-B0FA-5A0D15DBD03F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AF6B24B-8092-4518-B0FA-5A0D15DBD03F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF6B24B-8092-4518-B0FA-5A0D15DBD03F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF6B24B-8092-4518-B0FA-5A0D15DBD03F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF6B24B-8092-4518-B0FA-5A0D15DBD03F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE2E5D38-9089-417D-8B0D-7F2F717A7C20}
+	EndGlobalSection
+EndGlobal
