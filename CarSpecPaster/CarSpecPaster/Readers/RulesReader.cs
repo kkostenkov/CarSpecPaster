@@ -31,6 +31,7 @@ namespace CarSpecPaster
         private ReadRules ReadRules(StreamReader sr)
         {
             var rules = new ReadRules();
+            Console.WriteLine("Reading rules...");
             rules.Requests = ReadRequests(sr);
             rules.Substitutions = ReadSubstitutions(sr);
             return rules;
@@ -82,11 +83,13 @@ namespace CarSpecPaster
                         Console.WriteLine($"I don't know how to parse setting line {0}", settingLine);
                         return null;
                     }
-                    var requset = new XlsReadRequest();
-                    requset.SheetName = splitSettings[0];
-                    requset.KeysColumn = Int32.Parse(splitSettings[1]);
-                    requset.ValuesColumn = Int32.Parse(splitSettings[2]);
-                    return requset;
+                    var request = new XlsReadRequest();
+                    request.SheetName = splitSettings[0];
+                    request.KeysColumn = Int32.Parse(splitSettings[1]);
+                    request.ValuesColumn = Int32.Parse(splitSettings[2]);
+                    Console.WriteLine(string.Format("From Excel sheet {0} read columns {1} as keys and {2} as values:", 
+                        request.SheetName, request.KeysColumn, request.ValuesColumn));
+                    return request;
                 }
 
             }
@@ -96,7 +99,7 @@ namespace CarSpecPaster
         private Dictionary<string, string> ReadSubstitutions(StreamReader sr)
         {
             var substitutions = new Dictionary<string, string>();
-
+            Console.WriteLine("Replacement rules:" );
             while (!sr.EndOfStream)
             {
                 var line = sr.ReadLine();
@@ -111,6 +114,7 @@ namespace CarSpecPaster
                 }
                 var kv = line.Split(KV_SEPARATOR);
                 substitutions[kv[0]] = kv[1];
+                Console.WriteLine(string.Format("{0}:{1}", kv[0], kv[1]));
 
             }
             return substitutions;

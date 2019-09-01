@@ -16,7 +16,6 @@ namespace CarSpecPaster
 
     class XlsReader
     {
-
         public XlsReader()
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -39,6 +38,7 @@ namespace CarSpecPaster
                 //  - OpenXml Excel files (2007 format; *.xlsx)
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {
+                    Console.WriteLine(string.Format("Read from Excel sheet {0}:", request.SheetName));
                     do
                     {
                         if (!string.Equals(request.SheetName, reader.Name))
@@ -51,7 +51,7 @@ namespace CarSpecPaster
                             ReadRow(reader, data, request);
                         }
                     } while (reader.NextResult());
-                    
+                    Console.WriteLine();
                 }
             }
             return data;
@@ -65,7 +65,11 @@ namespace CarSpecPaster
                 return;
             }
             var val = ParseCell(reader, request.ValuesColumn);
-            data[key] = val;
+            if (!string.IsNullOrEmpty(val))
+            {
+                data[key] = val;
+                Console.WriteLine(string.Format("{0} : {1}", key, val));
+            }
         }
 
         private string ParseCell(IExcelDataReader reader, int columnToParse)
